@@ -1,0 +1,6 @@
+1. Indexar o Tomcat ao Eclipse
+    > Window Server > Add
+
+2. Indexar o projeto web ao Tomcat
+    > Window Server > Tomcat > Botão direito Add and Remove
+
