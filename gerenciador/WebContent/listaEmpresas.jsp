@@ -12,12 +12,10 @@
 <body>
 	Empresas Cadastradas:
 	<ul>
-		<%
-				List<Empresa> empresas = (List<Empresa>) request.getAttribute("empresas");
-				for (Empresa empresa : empresas) {%>
-					<%="<li>" + empresa.getNome() + "</li>"%>
-				<%}
-		%>
+		<%List<Empresa> empresas = (List<Empresa>) request.getAttribute("empresas");
+		  for (Empresa empresa : empresas) {%>
+		<%="<li>" + empresa.getNome() + "</li>"%>
+		<%}%>
 	</ul>
 </body>
 </html>
