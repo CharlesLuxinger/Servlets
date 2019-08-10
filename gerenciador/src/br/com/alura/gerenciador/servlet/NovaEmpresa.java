@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.servlet.entity.Empresa;
+import br.com.alura.gerenciador.servlet.persistence.DB;
+
 /**
  * Servlet implementation class NovaEmpresa
  */
@@ -21,6 +24,12 @@ public class NovaEmpresa extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String nomeEmpresa = request.getParameter("nome");
+		
+		Empresa empresa = new Empresa(null, nomeEmpresa);
+		
+		DB banco = new DB();
+		banco.addDb(empresa);
+		
 		
 		PrintWriter out = response.getWriter();
 		
