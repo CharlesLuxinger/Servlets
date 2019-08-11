@@ -20,7 +20,7 @@ import br.com.alura.gerenciador.servlet.persistence.DB;
 public class ListaEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Empresa> empresas = DB.getEmpresas();
 
