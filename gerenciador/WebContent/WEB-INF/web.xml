@@ -7,7 +7,12 @@
 	<welcome-file-list>
 		<welcome-file>HelloWord.html</welcome-file>
 	</welcome-file-list>
-
+		
+	<session-config>
+		<!-- 10 min -->
+		<session-timeout>10</session-timeout>
+	</session-config>
+	
 	<servlet>
 		<servlet-name>helloWorld</servlet-name>
 		<servlet-class>br.com.alura.gerenciador.servlet.HelloWord</servlet-class>
@@ -16,8 +21,31 @@
 		<servlet-name>helloWorld</servlet-name>
 		<url-pattern>/helloWorld</url-pattern>
 	</servlet-mapping>
-	<session-config>
-		<!-- 10 min -->
-		<session-timeout>10</session-timeout>
-	</session-config>
+			
+	<filter>
+		<filter-name>Monitor</filter-name>
+		<filter-class>br.com.alura.gerenciador.servlet.MonitorFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Monitor</filter-name>
+		<url-pattern>/main</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>Login</filter-name>
+		<filter-class>br.com.alura.gerenciador.servlet.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Login</filter-name>
+		<url-pattern>/main</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>Controller</filter-name>
+		<filter-class>br.com.alura.gerenciador.servlet.ControllerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Controller</filter-name>
+		<url-pattern>/main</url-pattern>
+	</filter-mapping>
 </web-app>

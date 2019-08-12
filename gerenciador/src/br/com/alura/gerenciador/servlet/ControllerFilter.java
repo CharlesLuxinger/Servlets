@@ -2,21 +2,26 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.servlet.action.Action;
 
-//@WebServlet("/main") Config > Web.xml // Alterado para Controller Filter
-public class Main extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//@WebFilter("/main") > Config Web.xml
+public class ControllerFilter implements Filter {
 
 	@SuppressWarnings("deprecation")
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doFilter(ServletRequest requestServlet, ServletResponse responseServlet, FilterChain chain)
+			throws IOException, ServletException {
+		HttpServletResponse response = (HttpServletResponse) responseServlet;
+		HttpServletRequest request = (HttpServletRequest) requestServlet;		
+		
 		String paramAction = request.getParameter("action");
 
 		String className = "br.com.alura.gerenciador.servlet.action." + paramAction;
@@ -39,7 +44,6 @@ public class Main extends HttpServlet {
 		} else {
 			response.sendRedirect(param[1]);
 		}
-
 	}
 
 }
