@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.servlet.action.AddEmpresa;
+import br.com.alura.gerenciador.servlet.action.AddEmpresaForm;
 import br.com.alura.gerenciador.servlet.action.EditEmpresa;
 import br.com.alura.gerenciador.servlet.action.ListEmpresa;
 import br.com.alura.gerenciador.servlet.action.RemoveEmpresa;
@@ -43,7 +44,10 @@ public class Main extends HttpServlet {
 		case "addEmpresa":
 			paramRequest = AddEmpresa.run(request, response);
 			break;
-
+			
+		case "addEmpresaForm":
+			paramRequest = AddEmpresaForm.run(request, response);
+			break;
 		default:
 			throw new IllegalArgumentException("Ação: " + action + ", Inválida!");
 		}
@@ -51,7 +55,7 @@ public class Main extends HttpServlet {
 		String[] param = paramRequest.split(":");
 
 		if (param[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(param[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + param[1]);
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect(param[1]);
