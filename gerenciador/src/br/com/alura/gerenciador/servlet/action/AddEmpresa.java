@@ -18,7 +18,7 @@ public class AddEmpresa extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public static void run(HttpServletRequest request, HttpServletResponse response)
+	public static String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Date dataAbertura;
 
@@ -37,7 +37,7 @@ public class AddEmpresa extends HttpServlet {
 		DB banco = new DB();
 		banco.addDb(empresa);
 
-		response.sendRedirect("main?action=listEmpresas");
+		return "redirect:main?action=listEmpresas";
 
 		// Request JSP
 		/*

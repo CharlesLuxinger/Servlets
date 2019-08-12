@@ -2,7 +2,6 @@ package br.com.alura.gerenciador.servlet.action;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ import br.com.alura.gerenciador.servlet.model.entity.Empresa;
 public class ShowEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public static void run(HttpServletRequest request, HttpServletResponse response)
+	public static String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 
@@ -27,9 +26,8 @@ public class ShowEmpresa extends HttpServlet {
 		}
 
 		request.setAttribute("empresa", empresa);
-		RequestDispatcher rd = request.getRequestDispatcher("/formEditEmpresa.jsp");
-		rd.forward(request, response);
 
+		return "forward:formEditEmpresa.jsp";
 	}
 
 }

@@ -2,6 +2,7 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,31 +22,41 @@ public class Main extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-
+		String paramRequest = null;
 		switch (action) {
 		case "listEmpresas":
-			ListEmpresa.run(request, response);			
+			paramRequest = ListEmpresa.run(request, response);
 			break;
-			
+
 		case "showEmpresa":
-			ShowEmpresa.run(request, response);	
+			paramRequest = ShowEmpresa.run(request, response);
 			break;
-			
+
 		case "editEmpresa":
-			EditEmpresa.run(request, response);
+			paramRequest = EditEmpresa.run(request, response);
 			break;
-			
+
 		case "removeEmpresa":
-			RemoveEmpresa.run(request, response);	
+			paramRequest = RemoveEmpresa.run(request, response);
 			break;
-			
+
 		case "addEmpresa":
-			AddEmpresa.run(request, response);
+			paramRequest = AddEmpresa.run(request, response);
 			break;
-			
+
 		default:
 			throw new IllegalArgumentException("Ação: " + action + ", Inválida!");
 		}
+
+		String[] param = paramRequest.split(":");
+
+		if (param[0].equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher(param[1]);
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect(param[1]);
+		}
+
 	}
 
 }
