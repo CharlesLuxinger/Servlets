@@ -4,3 +4,15 @@
 2. Indexar o projeto web ao Tomcat
     > Window Server > Tomcat > Botão direito Add and Remove
 
+3. Realizar o deploy da aplicação no Tomcat
+    3.1 Gerar o arquivo .war
+    3.2 Copiar o arquivo .war para dentro da pasta do Tomcat > Webapp
+
+4. Subir o Tomcat através CMD
+    > Pasta bin > startup.bat
+
+5. O Tomcat utiliza a variável JAVAHOME e PATH para pegar qual versão do java irá usar para compilar
+
+6. Configurar para o Tomcat utilizar a porta 80 com padrão
+    > Pasta Tomcat > config > server.xml
+        > Connector port="8080" > Connector port="80"
