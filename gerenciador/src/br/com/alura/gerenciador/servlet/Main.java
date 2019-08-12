@@ -20,15 +20,6 @@ public class Main extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String paramAction = request.getParameter("action");
-		HttpSession session = request.getSession();
-		
-		boolean userChecked = session.getAttribute("userLogon") == null;
-		boolean loginAction = paramAction.equals("LoginForm") || paramAction.equals("Login");
-
-		if (!loginAction && userChecked) {
-			response.sendRedirect("main?action=LoginForm");
-			return;
-		}
 
 		String className = "br.com.alura.gerenciador.servlet.action." + paramAction;
 
