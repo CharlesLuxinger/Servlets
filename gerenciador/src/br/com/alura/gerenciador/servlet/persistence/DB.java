@@ -2,7 +2,6 @@ package br.com.alura.gerenciador.servlet.persistence;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import br.com.alura.gerenciador.servlet.entity.Empresa;
@@ -26,13 +25,15 @@ public class DB {
 	}
 
 	public void removeEmpresaById(Integer id) {
-		/*
-		 * Iterator<Empresa> it = empresas.iterator();
-		 * 
-		 * while (it.hasNext()) { Empresa emp = it.next(); if (emp.getId() == id) {
-		 * it.remove(); } }
-		 */
-		
 		empresas.removeIf(x -> x.getId() == id);
+	}
+
+	public Empresa findById(Integer id) throws IllegalAccessException {
+		for (Empresa empresa : empresas) {
+			if (empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		throw new IllegalAccessException("ID: " + id + ", não existe!");
 	}
 }
