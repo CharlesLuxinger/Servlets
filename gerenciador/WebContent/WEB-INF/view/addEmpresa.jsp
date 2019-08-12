@@ -8,6 +8,7 @@
 <title>Add Empresa</title>
 </head>
 <body>
+	<c:import url="login.jsp"/>
 	<c:if test="${ not empty nomeEmpresa}">
 		Empresa ${nomeEmpresa}, Cadastrada!
 	</c:if>

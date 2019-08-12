@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.servlet.model.DB;
 import br.com.alura.gerenciador.servlet.model.entity.User;
@@ -17,10 +18,15 @@ public class Login implements Action {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 
-		if (DB.findUser(new User(login, password))) {
-			return "redirect:ListEmpresa";
+		User userOn = new User(login, password);
+		
+		if (DB.findUser(userOn)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userLogon", userOn);
+			
+			return "redirect:main?action=ListEmpresa";
 		}
-		return "redirect:LoginForm";
+		return "redirect:main?action=LoginForm";
 	}
 
 }

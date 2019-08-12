@@ -13,7 +13,6 @@ public class LoginForm extends HttpServlet implements Action{
 
 	public String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		return "forward:formLogin.jsp";
 	}
 

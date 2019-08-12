@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.servlet.action.Action;
 
@@ -19,6 +20,15 @@ public class Main extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String paramAction = request.getParameter("action");
+		HttpSession session = request.getSession();
+		
+		boolean userChecked = session.getAttribute("userLogon") == null;
+		boolean loginAction = paramAction.equals("LoginForm") || paramAction.equals("Login");
+
+		if (!loginAction && userChecked) {
+			response.sendRedirect("main?action=LoginForm");
+			return;
+		}
 
 		String className = "br.com.alura.gerenciador.servlet.action." + paramAction;
 
@@ -38,7 +48,7 @@ public class Main extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + param[1]);
 			rd.forward(request, response);
 		} else {
-			response.sendRedirect("main?action=" + param[1]);
+			response.sendRedirect(param[1]);
 		}
 
 	}

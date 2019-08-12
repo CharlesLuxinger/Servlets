@@ -12,7 +12,7 @@
 <title>Empresas Cadastradas</title>
 </head>
 <body>
-	<c:if test="${ not empty empresas}">
+	<c:import url="login.jsp"/>
 	Empresas Cadastradas:
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
@@ -22,7 +22,6 @@
 			</li>
 		</c:forEach>
 	</ul>
-	</c:if>
 	<c:if test="${ empty empresas}"> Nenhuma empresa cadastrada! </c:if>
 </body>
 </html>

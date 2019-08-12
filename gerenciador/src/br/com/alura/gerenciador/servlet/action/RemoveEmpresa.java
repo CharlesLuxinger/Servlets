@@ -20,6 +20,6 @@ public class RemoveEmpresa extends HttpServlet implements Action{
 		DB banco = new DB();
 		banco.removeEmpresaById(id);
 
-		return "redirect:ListEmpresa";
+		return "redirect:main?action=ListEmpresa";
 	}
 }
