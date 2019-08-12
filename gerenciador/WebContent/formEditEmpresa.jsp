@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<c:url value="/editEmpresa" var="linkServletNovaEmpresa" />
+<c:url value="/main" var="linkMain" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,13 @@
 <title>Edit Empresa</title>
 </head>
 <body>
-	<form action="${linkServletNovaEmpresa}" method="post">
+	<form action="${linkMain}" method="post">
 		Nome:<input type="text" name="nome" value="${ empresa.nome }" /> 
 		Data Abertura:<input type="text" name="data"
 			value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>" />
-		<input type="hidden" name="id" value="${empresa.id}"> <input
-			type="submit" />
+		<input type="hidden" name="id" value="${empresa.id}"> 
+		<input type="hidden" name="action" value="editEmpresa">
+		<input type="submit" />  
 	</form>
 
 </body>

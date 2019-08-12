@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Nova Empresa</title>
+<title>Add Empresa</title>
 </head>
 <body>
 	<c:if test="${ not empty nomeEmpresa}">

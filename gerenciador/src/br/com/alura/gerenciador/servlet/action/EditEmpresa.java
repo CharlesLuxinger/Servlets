@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.servlet.action;
 
 import java.io.IOException;
 import java.rmi.ServerException;
@@ -7,19 +7,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.servlet.entity.Empresa;
-import br.com.alura.gerenciador.servlet.persistence.DB;
+import br.com.alura.gerenciador.servlet.model.DB;
+import br.com.alura.gerenciador.servlet.model.entity.Empresa;
 
-@WebServlet("/editEmpresa")
 public class EditEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public static void run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		DB banco = new DB();
 		Empresa editEmpresa;
@@ -39,7 +37,7 @@ public class EditEmpresa extends HttpServlet {
 		editEmpresa.setNome(nomeEmpresa);
 		editEmpresa.setDataAbertura(dataAbertura);
 		
-		response.sendRedirect("listaEmpresas");
+		response.sendRedirect("main?action=listEmpresas");
 	}
 
 }

@@ -1,10 +1,10 @@
-package br.com.alura.gerenciador.servlet.persistence;
+package br.com.alura.gerenciador.servlet.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.alura.gerenciador.servlet.entity.Empresa;
+import br.com.alura.gerenciador.servlet.model.entity.Empresa;
 
 public class DB {
 
