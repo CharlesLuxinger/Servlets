@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.servlet.model.DB;
 
-public class RemoveEmpresa extends HttpServlet {
+public class RemoveEmpresa extends HttpServlet implements Action{
 	private static final long serialVersionUID = 1L;
 
-	public static String run(HttpServletRequest request, HttpServletResponse response)
+	public String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		Integer id = Integer.valueOf(request.getParameter("id"));
@@ -20,6 +20,6 @@ public class RemoveEmpresa extends HttpServlet {
 		DB banco = new DB();
 		banco.removeEmpresaById(id);
 
-		return "redirect:main?action=listEmpresas";
+		return "redirect:main?action=ListEmpresa";
 	}
 }

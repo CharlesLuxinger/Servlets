@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddEmpresaForm extends HttpServlet {
+public class AddEmpresaForm extends HttpServlet implements Action{
 
 	private static final long serialVersionUID = 1L;
 
-	public static String run(HttpServletRequest request, HttpServletResponse response)
+	public String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		return "forward:formAddEmpresa.jsp";

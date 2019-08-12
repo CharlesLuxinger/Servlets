@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.servlet.model.DB;
 import br.com.alura.gerenciador.servlet.model.entity.Empresa;
 
-public class ShowEmpresa extends HttpServlet {
+public class ShowEmpresa extends HttpServlet implements Action{
 	private static final long serialVersionUID = 1L;
 
-	public static String run(HttpServletRequest request, HttpServletResponse response)
+	public String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 
