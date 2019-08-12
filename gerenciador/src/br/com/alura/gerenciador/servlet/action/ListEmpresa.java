@@ -15,11 +15,8 @@ public class ListEmpresa extends HttpServlet implements Action {
 	private static final long serialVersionUID = 1L;
 
 	public String run(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		List<Empresa> empresas = DB.getEmpresas();
-
 		request.setAttribute("empresas", empresas);
-
 		return "forward:listEmpresas.jsp";
 	}
 

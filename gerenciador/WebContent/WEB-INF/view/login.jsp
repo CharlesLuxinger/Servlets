@@ -3,4 +3,3 @@ Usuário: ${userLogon.login}
 <br>
 <br>
 <br>
-<c:if test="${ not empty empresas}">
