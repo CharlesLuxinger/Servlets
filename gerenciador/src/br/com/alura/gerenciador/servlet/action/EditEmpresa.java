@@ -37,7 +37,7 @@ public class EditEmpresa extends HttpServlet implements Action{
 		editEmpresa.setNome(nomeEmpresa);
 		editEmpresa.setDataAbertura(dataAbertura);
 		
-		return "redirect:main?action=ListEmpresa";
+		return "redirect:ListEmpresa";
 	}
 
 }

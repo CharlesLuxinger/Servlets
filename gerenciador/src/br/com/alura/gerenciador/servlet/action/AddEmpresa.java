@@ -37,7 +37,7 @@ public class AddEmpresa extends HttpServlet implements Action{
 		DB banco = new DB();
 		banco.addDb(empresa);
 
-		return "redirect:main?action=ListEmpresa";
+		return "redirect:ListEmpresa";
 
 		// Request JSP
 		/*

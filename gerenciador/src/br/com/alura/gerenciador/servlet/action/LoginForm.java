@@ -7,19 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.servlet.model.DB;
+public class LoginForm extends HttpServlet implements Action{
 
-public class RemoveEmpresa extends HttpServlet implements Action{
 	private static final long serialVersionUID = 1L;
 
 	public String run(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer id = Integer.valueOf(request.getParameter("id"));
-
-		DB banco = new DB();
-		banco.removeEmpresaById(id);
-
-		return "redirect:ListEmpresa";
+		return "forward:formLogin.jsp";
 	}
+
 }

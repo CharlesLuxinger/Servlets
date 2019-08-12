@@ -19,6 +19,7 @@ public class Main extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String paramAction = request.getParameter("action");
+
 		String className = "br.com.alura.gerenciador.servlet.action." + paramAction;
 
 		Action action = null;
@@ -37,7 +38,7 @@ public class Main extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + param[1]);
 			rd.forward(request, response);
 		} else {
-			response.sendRedirect(param[1]);
+			response.sendRedirect("main?action=" + param[1]);
 		}
 
 	}
