@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -16,6 +17,12 @@ import br.com.alura.gerenciador.servlet.action.Action;
 //@WebFilter("/main") > Config Web.xml
 public class ControllerFilter implements Filter {
 
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {}
+	
+	@Override
+	public void destroy() {}
+	
 	@SuppressWarnings("deprecation")
 	public void doFilter(ServletRequest requestServlet, ServletResponse responseServlet, FilterChain chain)
 			throws IOException, ServletException {
